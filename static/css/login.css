@@ -1,0 +1,79 @@
+.login {
+    background-image: url('../images/wallpaper1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    padding-top: 5%;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.loginForm form {
+    margin-top: 1%;
+    width: 100%;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: transparent;
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+    float: left;
+    margin-bottom: 2%;
+}
+
+.loginForm label {
+    font-style: italic;
+    float: left;
+}
+
+.loginForm input {
+    border: 1px solid #bdbdbd !important;
+    color: chocolate;
+    border-radius: 5px;
+}
+
+.loginForm input:hover {
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+}
+
+.loginForm input:focus {
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+}
+
+.loginForm .btn {
+    background-color: rgba(245, 82, 7, 0.8);
+    padding: 20px !important;
+}
+
+.loginForm .help-block {
+    color: red;
+    text-align: center;
+}
+
+.alert li {
+    color: red;
+}
+
+.form-control:hover,
+.form-check-label:hover,
+input:hover::placeholder {
+    color: chocolate;
+}
+
+.form-group input:hover {
+    border: 1px solid transparent;
+    box-shadow: 0 0 6px 0 chocolate;
+    color: chocolate;
+}
+
+.signup {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 3%;
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+}
+
+.helptext {
+    display: none;
+}
