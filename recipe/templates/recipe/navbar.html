@@ -1,0 +1,50 @@
+{%load static%}
+
+<nav class="navbar navbar-expand-lg navbar-dark nav-info-dark ">
+    <a class="navbar-brand" href="/"><strong>Recipe </strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+
+        </ul>
+        <form class="mb-0 ml-auto mr-auto" id="searchform" action="{% url 'search_results' %}" role="search">
+
+            <div class="input-group">
+                <input class="form-control py-2 border-right-0  border text-center" type="search" placeholder="search" id="searching" name="search_profile">
+                <span class="input-group-append">
+				<button class="input-group-text bg-transparent border-left-0 sm" type="submit"><i
+						class="fa fa-search "></i></button>
+			</span>
+            </div>
+        </form>
+
+        <ul class="navbar-nav ml-auto">
+
+            {% if user.is_authenticated %}
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <i class="fas fa-user"></i>&nbsp;<strong>{{user.username}}</strong> </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href=" {%url 'profile' user.username %}"><i
+							class="far fa-user"></i>&nbsp; My account</a>
+                    <a class="dropdown-item" href="/logout"><i
+							class="fas fa-sign-out-alt"></i>&nbsp; Log out</a>
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'login' %}" style='margin-right:30px'><i
+						class="fas fa-sign-in-alt"></i>&nbsp; <strong>Log In</strong></a>
+            </li>
+
+            {%endif%}
+
+        </ul>
+    </div>
+</nav>
