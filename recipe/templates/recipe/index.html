@@ -1,7 +1,7 @@
 {% extends 'recipe/base.html' %}{% load crispy_forms_tags %} {% block content %}{{block.super}}
 <div class="headerArea">
     <div class="headerDetails">
-        <h1 style="font-weight:bold">Recipe <br> OOzing in the best of recipes!</h1>
+        <h1 style="font-weight:bold">Vegeterian Recipe <br> Cooking is like painting or writing a song!</h1>
 
 
 
@@ -10,13 +10,13 @@
         <i class="fa fa-plus" aria-hidden="true"></i>
         Post Recipe
     </button>
-    <div class="punDetails">
-        <p><i class="fa fa-quote-left"></i> Good Vibes with Good Food</p>
+    <!-- <div class="punDetails">
+        <p><i class="fa fa-quote-left"></i> A recipe has no soul</p>
 
-        <p> LISTEN!: {{puns}}</p>
+        <p> You as the cook must bring soul to the recipe</p>
         <p> <i class="fa fa-quote-right"></i>
         </p>
-    </div>
+    </div> -->
 </div>
 <div class="col-md-6">
     <div class="row" style="background-color:white;">
@@ -44,7 +44,8 @@
     <div>
     </div>
 </div>
-<h1 class="text-center"> Top Recipes<i class="fas fa-star"></i><i class="far fa-star"></i><i class="fas fa-star"></i></h1>
+<a href="{% url 'comment' %}" class="btn btn-success btn-sm"> <span>Add Comment </span></a>
+<!-- <h1 class="text-center"> Top Rated Recipes<i class=""></i><i class=""></i><i class=""></i></h1> -->
 <hr style="border:2px solid grey">
 <div class="container mt-5 myCards">
 

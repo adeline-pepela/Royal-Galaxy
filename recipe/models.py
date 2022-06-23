@@ -86,3 +86,24 @@ class Recipe(models.Model):
     @classmethod
     def search_profile(cls, search_term):
         return cls.objects.filter(ingredient__icontains=search_term).all()
+
+class Comment(models.Model):
+    comment=models.TextField(max_length=150)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    recipe=models.ForeignKey(Recipe,related_name='comments',on_delete=models.CASCADE)
+
+    class Meta:
+        ordering=['created_on']
+
+    def _str_(self):
+        return self.comment
+    def save_comment(self):
+        self.save()
+    def delete_comment(self):
+        self.delete()
+
+    @classmethod
+    def get_comments(cls,id):
+        comments = cls.objects.filter(post__id=id)
+        return comments

@@ -15,7 +15,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-# import requests
+import requests
 
 
 
@@ -39,9 +39,9 @@ def welcome(request):
 
     else:
         form=UploadRecipeForm()
-    # response =requests.get('https://my-bao-server.herokuapp.com/api/breadpuns')
-    # puns =response.json()
-    # return render(request, 'recipe/index.html',{'recipes':recipes,'form':form,'users':users,'puns':puns})
+    response =requests.get('https://my-bao-server.herokuapp.com/api/breadpuns')
+    puns =response.json()
+    return render(request, 'recipe/index.html',{'recipes':recipes,'form':form,'users':users,'puns':puns})
 
    
 
@@ -343,3 +343,16 @@ def search_results(request):
     else:
         message = "You haven't searched for any recipe"
     return render(request, 'recipe/search.html', {'message': message,'recipes':recipes})
+
+def comment(request):
+    comments=Comment.objects.all()
+    if request.method=='POST':
+        form=CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.user=request.user
+            comment.save()
+            return redirect('index')
+    else:
+        form=CommentForm()
+    return render(request, 'recipe/comment.html',{'form':form, 'comments':comments})    
