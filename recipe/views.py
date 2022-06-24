@@ -344,15 +344,21 @@ def search_results(request):
         message = "You haven't searched for any recipe"
     return render(request, 'recipe/search.html', {'message': message,'recipes':recipes})
 
-def comment(request):
+def comment(request,recipe_id):
+    current_user=request.user.profile
+    recipe=recipe.object.get(id=recipe_id)
+    user=User.objects.get(username=current_user.user)
     comments=Comment.objects.all()
     if request.method=='POST':
         form=CommentForm(request.POST, request.FILES)
         if form.is_valid():
             comment=form.save(commit=False)
             comment.user=request.user
+            comment.save=recipe
+            comment.user=request.user.profile
             comment.save()
             return redirect('index')
     else:
         form=CommentForm()
-    return render(request, 'recipe/comment.html',{'form':form, 'comments':comments})    
+        
+    return render(request, 'recipe/comment.html',{'form':form, 'comments':comments ,'recipe':recipe})    
